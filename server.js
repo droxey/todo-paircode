@@ -23,7 +23,7 @@ app.use(express.static("public"));
 
 // Routes
 // =============================================================
-require("./controllers/taskController.js")(app);
+require("./controllers/taskController.js");
 
 // Starts the server to begin listening
 // =============================================================
