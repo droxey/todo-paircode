@@ -6,6 +6,8 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
+var controller = require("./controllers/taskController.js");
+var db = require("./models");
 
 // Sets up the Express App
 // =============================================================
@@ -21,12 +23,9 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 // Static directory
 app.use(express.static("public"));
 
-// Routes
-// =============================================================
-require("./controllers/taskController.js");
-
-// Starts the server to begin listening
-// =============================================================
-app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
+// Syncing our sequelize models and then starting our express app
+db.sequelize.sync({ force: true }).then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
 });
