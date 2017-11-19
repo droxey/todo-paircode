@@ -1,14 +1,14 @@
 module.exports = function(sequelize, DataTypes) {
   var TodoItem = sequelize.define("TodoItem", {
     item_text: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
       validate: {
         len: [1]
       }
     },
     is_complete: {
-      type: DataTypes.TEXT,
+      type: DataTypes.BOOLEAN,
       allowNull: false,
       len: [1]
     }
