@@ -26,7 +26,7 @@ module.exports = function(app) {
   });  
 
   // PUT route for updating todos. The updated todo will be available in req.body
-  app.put("/todo/todos", function(req, res) {
+  app.put("/todo/:id", function(req, res) {
 
   });
   
