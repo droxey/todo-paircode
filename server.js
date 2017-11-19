@@ -6,13 +6,14 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
-var controller = require("./controllers/taskController.js");
 var db = require("./models");
 
 // Sets up the Express App
 // =============================================================
 var app = express();
 var PORT = process.env.PORT || 8080;
+
+var controller = require("./controllers/taskController.js")(app);
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
