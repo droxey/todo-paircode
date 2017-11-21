@@ -17,9 +17,9 @@ module.exports = function(app) {
   app.post("/todo/new", function(req, res) {
     db.TodoItem.create({
       item_text: req.body.item_text
-    }).then(function(todo_db) {
+    }).then(function(result) {
       // `results` here would be the newly created chirp
-      res.json(todo_db);
+      res.json(result);
     });
   });
 
@@ -28,9 +28,9 @@ module.exports = function(app) {
     db.todoItem.update({
       text: req.body.item_text,
       complete: req.body.is_complete
-    }).then(function(todo_db) {
+    }).then(function(result) {
       // We have access to the new todo as an argument inside of the callback function
-      res.json(todo_db);
+      res.json(result);
     })
     .catch(function(err) {
      // Whenever a validation or flag fails, an error is thrown
@@ -45,8 +45,8 @@ module.exports = function(app) {
       where: {
         id: req.params.id
       }
-    }).then(function(todo_db) {
-      res.json(todo_db);
+    }).then(function(result) {
+      res.json(result);
     });
     })
 };
